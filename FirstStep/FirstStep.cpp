@@ -15,15 +15,20 @@
 //#include "scene.h"
 #include "sceneManager.h"
 #include "mapManager.h"
+#include "obj.h"
+#include "System.h"
 using namespace std;
 // event
 std::function<void(void)> eventWork;
  
 PlayerManger playerManger;
 #endif
- 
+vector<Obj> g_Objs;
 int main()
 {    
+	CreateObjs();
+	ShowObjs();
+	getchar();
 	/*EventManager eventMangaer; 
 	Event *event1 = new Event("no1");
 	eventMangaer.AddEvents(event1);

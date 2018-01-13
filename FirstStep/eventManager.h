@@ -3,7 +3,7 @@
 #include <vector>
 class EventManager
 {
-	ADD_MEMBER(Event, Events)
+	ADD_PMEMBER(Event, Events)
 private:
 	//std::vector<Event> m_events;
 	enum Statu { INITIAL, WORKING, STOP};

@@ -4,7 +4,7 @@
 
 class PlayerManger
 {
-	ADD_MEMBER(Player, Players)
+	ADD_PMEMBER(Player, Players)
 public:
 	PlayerManger() {}
 	~PlayerManger()

@@ -3,7 +3,7 @@
 #include "Base.h"
 class RoleManger
 { 
-	ADD_MEMBER(Role, Roles)
+	ADD_PMEMBER(Role, Roles)
 private:
 	 
 public:

@@ -1,3 +1,12 @@
-﻿  events.cpp
+﻿cl : 命令行 warning D9030: “/Gm”与多处理不兼容；忽略 /MP 开关
+  player.cpp
+g:\06code\newworld20171021\firststep\firststep\player.h(229): warning C4003: “RESOUCES”宏的实参不足
+  FirstStep.cpp
+g:\06code\newworld20171021\firststep\firststep\player.h(229): warning C4003: “RESOUCES”宏的实参不足
+  正在生成代码...
+  正在编译...
+  events.cpp
+  ShopEvent.cpp
+  正在生成代码...
   FirstStep.vcxproj -> G:\06code\NewWorld20171021\FirstStep\x64\Debug\FirstStep.exe
   FirstStep.vcxproj -> G:\06code\NewWorld20171021\FirstStep\x64\Debug\FirstStep.pdb (Full PDB)

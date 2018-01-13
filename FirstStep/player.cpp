@@ -1,5 +1,7 @@
 #include "player.h"
 #include "scene.h"
+map<int32_t, string>Obj_ind2Name;
+map<int32_t, uint32_t>Obj_ind2Num;
 void Player::PlayerRunIntoSence(Scene *s)
 {
 	RunIntoSence(s);
@@ -26,7 +28,7 @@ CHOOSE:
 	{
 		return;
 	}
-	PlayerRunIntoPlace(GetScene()->GetPlaceManager()->GetPlaces()->at(select));
+	PlayerRunIntoPlace(select);//GetScene()->GetPlaceManager()->GetPlaces()->at(select)
 	cout << endl;
 	goto SCENE;
 }
@@ -68,20 +70,24 @@ void Player::StartEvent(int32_t select, string& eventName, string& skillName,
 
 	GetPlace()->StartEvent(eventName);
 }
-void Player::PlayerRunIntoPlace(Place* place)
+void Player::PlayerRunIntoPlace(int index)
 {
+	Place* place = GetScene()->GetPlaceManager()->GetPlaces()->at(index);
 	cout << "==============================" << endl;
 	cout << "玩家<" << GetName().c_str() << ">进入【" << place->GetName().c_str() << "】" << endl;
 	RunIntoPlace(place);
 CHOOSE_EVENT:
 	cout << "==============================" << endl;
-
+	ShowResouce();//ooooooooooo
 	cout << "玩家<" << GetName().c_str() << ">可以选择:" << endl;
 	cout << "0 - 退出【" << GetPlace()->GetName().c_str() << "】" << endl;
 
 	GetPlace()->GetEventManager()->ShowEvent();
 
+	cout << "i - 查询自身资源" << endl;
+
 	char key;
+	//cout << "请选择：";
 	cin >> key;
 
 	int select = 0;
@@ -99,7 +105,7 @@ CHOOSE_EVENT:
 		break;
 	default:
 		select = key - '1';
-		cout << GetPlace()->GetEventManager()->GetEvents()->size() << endl;
+		//cout << GetPlace()->GetEventManager()->GetEvents()->size() << endl;
 		if (select >= (int)GetPlace()->GetEventManager()->GetEvents()->size()
 			|| select < -1)
 		{
@@ -125,9 +131,11 @@ EVENT_PROC:
 		GetPlace()->StopEvent(eventName);
 		if (!skillName.empty())
 		{
-			cout << "==============================" << endl;
-			cout << "玩家停下手上的工作，此次共收获【" << m_objName.c_str() << "】:" << GetResouceNum(key) - lastNum << endl;
-
+			m_objName = GetResouceCNameFromCName(skillName);
+			cout << "==============================" << endl;  
+			cout << "玩家停下手上的工作，此次共收获【" << m_objName.c_str() << "】:" << GetResouceNum(index + 1) <<" - "<< lastNum << endl;
+			std::this_thread::sleep_for(10ms);//ooooooooooo
+			ShowResouce();//ooooooooooo
 			goto CHOOSE_EVENT;
 		}
 		else

@@ -22,7 +22,7 @@ enum MINE_TIMER { WOOD_TIMER = 500, STONE_TIMER = 1000 };
 enum OBJ_TYPE { RECOVER, EQUIP, LIVE };
 
 //========================  CLASS, MEMEBER BEGIN  ====================================
-#define ADD_MEMBER( CLASS, MEMBER) \
+#define ADD_PMEMBER( CLASS, MEMBER) \
 private: \
 	vector<CLASS*> m_##MEMBER; \
 public: \
@@ -175,11 +175,11 @@ public:	\
 
 
 //--------------OBJ begin---------------------
-#define ADD_OBJ_TYPE(TYPE, MEMBER)	\
+#define ADD_MEMBER(TYPE, MEMBER)	\
 private:	\
-	OBJ_TYPE m_##MEMBER;	\
+	TYPE m_##MEMBER;	\
 public:	\
 	auto Get##MEMBER() { return m_##MEMBER; }	\
 	auto Getp##MEMBER(){return &m_##MEMBER;}	\
-	void Set##MEMBER(OBJ_TYPE type){ m_##MEMBER = type;}
+	void Set##MEMBER(TYPE type){ m_##MEMBER = type;}
 //--------------OBJ end------------------------

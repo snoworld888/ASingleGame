@@ -52,3 +52,43 @@ void FightEvent::DoEvent()
 	GetRole2()->Rest();
 	SetFinish(true);
 }
+
+void ShopEvent::DoEvent()
+{
+	cout<<"【" << GetRole1()->GetName().c_str() << "】进入商店" << endl;
+	string msg;
+	while (GetStatu())
+	{
+		cout << "0 - 离开" << endl;
+		cout << "1 - 购买" << endl;
+		cout << "2 - 贩卖" << endl;
+		char key;
+		cin >> key;
+		switch (key - '0')
+		{
+		case 0:
+			goto OUT; 
+		case 1:
+			ShowObjs();
+			cout << "物品编号 - 数量" << endl;
+			char info[500];
+			cin >> info;
+			msg = info;
+			while (msg.find_first_of("-"))
+			{
+				int32_t idx = atoi(msg.substr(0, msg.find_first_of("-")).c_str());
+				int32_t num = atoi(msg.substr(msg.find_first_of("-"), msg.find_first_of(";")).c_str());
+				msg = msg.substr(msg.find_first_of(";") + 1, msg.length());
+			}
+			break;
+		case 2:
+			ShowPlayerObjs();
+			cout << "物品编号 - 数量" << endl;
+			break;
+		default:
+			break;
+		}  
+	}
+OUT:
+	SetFinish(true);
+}

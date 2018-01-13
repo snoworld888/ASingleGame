@@ -5,7 +5,7 @@
 #include "resoucePlace.h"
 #include "FightFlace.h"
 #include "placeManager.h"
-
+#include "Shop.h"
 using namespace std;
 
 struct SceneSize
@@ -18,8 +18,8 @@ class Scene
 { 
 	NAME(Name);
 	
-	//	ADD_MEMBER(Role, Roles)
-	//	ADD_MEMBER(Player, Players) 
+	//	ADD_PMEMBER(Role, Roles)
+	//	ADD_PMEMBER(Player, Players) 
 	CLASS_MEMBER(PlaceManager, PlaceManager);
 private:	
 	SceneSize m_size;
@@ -72,6 +72,8 @@ public:
 		auto place3 = new SingleFight("简单的战场");
 		placeManager->AddPlaces(place3);
 		
+		auto place4 = new Shop("商店");
+		placeManager->AddPlaces(place4);
 	}
  
 	~FreshVillage() {

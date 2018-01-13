@@ -102,20 +102,20 @@ public:
 			goto SCENE;
 		}*/
 
-	int GetResouceNum(char key)
+	int GetResouceNum(int key)
 	{
 		switch (key)
 		{
-		case '1':
+		case 1:
 			return GetStone(); 
-		case '2':
+		case 2:
 			return GetWood(); 
 		default:
 			return 0; 
 		}
 	}
 
-	void PlayerRunIntoPlace(Place* place);
+	void PlayerRunIntoPlace(int select);//Place* place
 
 	void StartEvent(int32_t select, string& eventName, string& skillName, uint32_t& lastNum);
 //	{

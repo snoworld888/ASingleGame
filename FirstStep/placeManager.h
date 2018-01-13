@@ -2,7 +2,7 @@
 #include "place.h"
 class PlaceManager
 {
-	ADD_MEMBER(Place, Places)
+	ADD_PMEMBER(Place, Places)
 public:
 	PlaceManager() {}
 	~PlaceManager() {}
